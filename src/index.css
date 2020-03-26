@@ -11,3 +11,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html,body,#root{
+  width: 100%;
+  height: 100%;
+}
+.ant-layout{
+  height: 100%;
+}
+
+.ant-layout-sider{
+  background-color: #1e5d93!important;
+}
+
+
+.ant-menu {
+  background-color: #1e5d93!important;
+}
+
+.ant-menu-submenu {
+  background-color: #1e5d93;
+  color: #ffffff;
+}
+
+.collapse-button {
+  background-color: #ffffff;
+  color: #ffffff;
+  border: none;
+}
+
+.collapse-button:hover {
+  
+}
+
+
+.ant-layout-header{
+  /* background-color: #ffffff!important; */
+}
+
+.menu-bg {
+  background-color: #1e5d93;
+}
+
+.tab-bg {
+  background-color: #ffffff;
+}
+
+.project-container {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+
+.projectName {
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0 8px 0 8px;
+}
