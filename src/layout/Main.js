@@ -3,10 +3,8 @@ import { Layout } from 'antd';
 import LeftMenu from '../components/Menu/index';
 import HeaderBar from '../components/Header/index';
 import { ProjectName } from '../config/index';
-import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined
-  } from "@ant-design/icons";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
 
 const { Header, Sider, Content } = Layout;
 
@@ -22,20 +20,20 @@ export default class Main extends React.Component {
   };
 
   getProjectName(collapsed) {
-      if (!collapsed) {
-        return <span className="projectName">{ProjectName}</span>
-      } else {
-        return <span></span>
-      }
+    if (!collapsed) {
+      return <span className="projectName">{ProjectName}</span>;
+    } else {
+      return <span></span>;
+    }
   }
 
   render() {
     const headerStyle = {
       padding: 0,
-      backgroundColor: "#ffffff"
+      backgroundColor: '#ffffff'
     };
     const siderStyle = {
-      backgroundColor: "#ffffff"
+      backgroundColor: '#ffffff'
     };
 
     return (
@@ -49,23 +47,27 @@ export default class Main extends React.Component {
           <div className="project-container">
             {this.getProjectName(this.state.collapsed)}
             <span>
-              {
-                this.state.collapsed ?
-                <MenuUnfoldOutlined onClick={this.toggleCollapsed} style={{ fontSize: '16px', color: '#ffffff' }}></MenuUnfoldOutlined> :
-                <MenuFoldOutlined  onClick={this.toggleCollapsed} style={{ fontSize: '16px', color: '#ffffff' }}></MenuFoldOutlined>
-              }
+              {this.state.collapsed ? (
+                <MenuUnfoldOutlined
+                  onClick={this.toggleCollapsed}
+                  style={{ fontSize: '16px', color: '#ffffff' }}
+                ></MenuUnfoldOutlined>
+              ) : (
+                <MenuFoldOutlined
+                  onClick={this.toggleCollapsed}
+                  style={{ fontSize: '16px', color: '#ffffff' }}
+                ></MenuFoldOutlined>
+              )}
             </span>
           </div>
-          
-          <LeftMenu collapsed={this.collapsed}/>
 
+          <LeftMenu collapsed={this.collapsed} />
         </Sider>
 
         <Layout>
           <Header style={headerStyle}>
-              <HeaderBar></HeaderBar>
+            <HeaderBar></HeaderBar>
           </Header>
-          <Content>内容</Content>
         </Layout>
       </Layout>
     );
