@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 import LeftMenu from '../components/Menu/index';
-import HeaderBar from '../components/Header/index';
+import ContentBar from '../components/Content/index';
 import { ProjectName } from '../config/index';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
@@ -65,9 +65,9 @@ export default class Main extends React.Component {
         </Sider>
 
         <Layout>
-          <Header style={headerStyle}>
-            <HeaderBar></HeaderBar>
-          </Header>
+          <Content>
+            <ContentBar></ContentBar>
+          </Content>
         </Layout>
       </Layout>
     );
