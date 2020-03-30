@@ -27,6 +27,20 @@ export const getMenuInfo = () => {
                             menuType: 2,
                             pageTypeCode: 2,
                             url: "http://www.baidu.com",
+                        },
+                        {
+                            menuId: 4,
+                            menuName: "销户2",
+                            menuType: 2,
+                            pageTypeCode: 2,
+                            url: "http://www.baidu.com",
+                        },
+                        {
+                            menuId: 5,
+                            menuName: "销户",
+                            menuType: 2,
+                            pageTypeCode: 2,
+                            url: "http://www.baidu.com",
                         }
                     ]
                 }

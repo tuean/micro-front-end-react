@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { Tabs, Radio } from 'antd';
-import { deleMenu } from '../../store/action';
+import { Tabs } from 'antd';
+import { deleMenu, changeMenu } from '../../store/action';
 const { TabPane } = Tabs;
 
 class HeaderBar extends React.Component {
@@ -15,18 +15,27 @@ class HeaderBar extends React.Component {
   onEdit = menuId => {
     this.props.dispatch(deleMenu(menuId));
   };
+
+  onChange = menuId => {
+    // console.log("change:" + menuId)
+    this.props.dispatch(changeMenu(menuId))
+  }
+
   render() {
     const { mode, type } = this.state;
     const menuInfo = this.props.menuInfo;
+    let activeKey = this.props.activeKey;
     console.log(menuInfo);
     return (
       <div>
         <Tabs
           defaultActiveKey="1"
+          activeKey={`${activeKey}`}
           tabPosition={mode}
           type={type}
           style={{ height: 220 }}
           onEdit={this.onEdit}
+          onChange={this.onChange}
         >
           {menuInfo.map(i => (
             <TabPane tab={i.menuName} key={i.menuId}>
@@ -44,7 +53,8 @@ class HeaderBar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    menuInfo: [...state.mainReducer.menuInfo]
+    menuInfo: [...state.mainReducer.menuInfo],
+    activeKey: state.mainReducer.activeKey
   };
 };
 
