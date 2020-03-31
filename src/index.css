@@ -101,3 +101,9 @@ html,body,#root{
   font-size: 16px;
   font-weight: 400;
 }
+
+.menu-logo {
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 6px;
+}

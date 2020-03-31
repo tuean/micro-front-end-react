@@ -57,10 +57,10 @@ class LeftMenu extends React.Component {
           title={
             <span>
               <span>
-                {item.url == null ? "" : <img alt="logo" src={item.iconUrl} />}
+                {item.iconUrl == null ? "" : <img alt="logo" className='menu-logo' src={item.iconUrl} />}
               </span>
 
-              <span>{collapsed && item.url == null ? getFirstChar(item.menuName) : item.menuName}</span>
+              <span>{collapsed ? (item.iconUrl == null ? getFirstChar(item.menuName) : '') : item.menuName}</span>
             </span>
           }
         >
