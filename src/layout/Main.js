@@ -5,18 +5,20 @@ import ContentBar from '../components/Content/index';
 import { ProjectName } from '../config/index';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
+import { collapseSider } from '../store/action' 
 
 const { Header, Sider, Content } = Layout;
 
-export default class Main extends React.Component {
+class Main extends React.Component {
   state = {
-    collapsed: false
+    // collapsed: false
   };
 
   toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
+    // this.setState({
+    //   collapsed: !this.state.collapsed
+    // });
+    this.props.dispatch(collapseSider())
   };
 
   getProjectName(collapsed) {
@@ -36,18 +38,23 @@ export default class Main extends React.Component {
       backgroundColor: '#ffffff'
     };
 
+
+    let collapsed = this.props.sider_collapesed;
+
+    console.log('main: ' + collapsed)
+
     return (
       <Layout>
         <Sider
           style={siderStyle}
           trigger={null}
           collapsible
-          collapsed={this.state.collapsed}
+          collapsed={collapsed}
         >
           <div className="project-container">
-            {this.getProjectName(this.state.collapsed)}
+            {this.getProjectName(collapsed)}
             <span>
-              {this.state.collapsed ? (
+              {collapsed ? (
                 <MenuUnfoldOutlined
                   onClick={this.toggleCollapsed}
                   style={{ fontSize: '16px', color: '#ffffff' }}
@@ -61,7 +68,7 @@ export default class Main extends React.Component {
             </span>
           </div>
 
-          <LeftMenu collapsed={this.collapsed} />
+          <LeftMenu />
         </Sider>
 
         <Layout>
@@ -73,3 +80,14 @@ export default class Main extends React.Component {
     );
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    // menuInfo: [...state.mainReducer.menuInfo],
+    // activeKey: state.mainReducer.activeKey,
+    sider_collapesed: state.siderReducer.sider_collapesed
+  };
+};
+
+export default connect(mapStateToProps)(Main);

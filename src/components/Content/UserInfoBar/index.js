@@ -23,8 +23,8 @@ class UserInfoBar extends React.Component {
             userInfo: res
           },
           () => {
-            console.log("userInfo");
-            console.log(this.state);
+            // console.log("userInfo");
+            // console.log(this.state);
           }
         );
       })
@@ -37,8 +37,8 @@ class UserInfoBar extends React.Component {
     let result = [];
     for (let index = 0; index < list.length; index++) {
       const n = list[index];
-      result.push(<span className="bar-font">{n.label} :</span>);
-      result.push(<span className="bar-font">{n.value}</span>);
+      result.push(<span className="bar-font" key={index * 2}>{n.label} :</span>);
+      result.push(<span className="bar-font" key={index * 2 + 1}>{n.value}</span>);
     }
     return result;
   };

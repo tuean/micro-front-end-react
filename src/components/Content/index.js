@@ -29,7 +29,8 @@ class ContentBar extends React.Component {
     const menuInfo = this.props.menuInfo;
     let activeKey = this.props.activeKey;
     const operations = <UserInfoBar></UserInfoBar>;
-    console.log(menuInfo);
+    // console.log(menuInfo);
+    
     return (
       <Layout>
         <Content>
@@ -43,7 +44,7 @@ class ContentBar extends React.Component {
             onChange={this.onChange}
             tabBarExtraContent={operations}
             hideAdd={true}
-            tabBarGutter={200}
+            tabBarGutter={8}
           >
             {menuInfo.map(i => (
               <TabPane

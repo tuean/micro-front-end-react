@@ -87,7 +87,9 @@ html,body,#root{
 }
 
 .bar-font {
-  padding-left: 6px;
+  padding-right: 8px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .button-logout {
@@ -95,5 +97,7 @@ html,body,#root{
   color: #3196Eb;
   text-decoration: underline;
   text-decoration-color: #3196Eb;
-  padding-right: 8px;
+  padding-right: 16px;
+  font-size: 16px;
+  font-weight: 400;
 }
