@@ -1,13 +1,14 @@
-import React from 'react';
-import { Layout } from 'antd';
-import LeftMenu from '../components/Menu/index';
-import ContentBar from '../components/Content/index';
-import { ProjectName } from '../config/index';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
-import { connect } from 'react-redux';
-import { collapseSider } from '../store/action' 
+import React from "react";
+import { Layout } from "antd";
+import LeftMenu from "../components/Menu/index";
+import ContentBar from "../components/Content/index";
+import { ProjectName } from "../config/index";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import { connect } from "react-redux";
+import { collapseSider } from "../store/action";
+import { Scrollbars } from "react-custom-scrollbars";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 class Main extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class Main extends React.Component {
     // this.setState({
     //   collapsed: !this.state.collapsed
     // });
-    this.props.dispatch(collapseSider())
+    this.props.dispatch(collapseSider());
   };
 
   getProjectName(collapsed) {
@@ -32,16 +33,15 @@ class Main extends React.Component {
   render() {
     const headerStyle = {
       padding: 0,
-      backgroundColor: '#ffffff'
+      backgroundColor: "#ffffff"
     };
     const siderStyle = {
-      backgroundColor: '#ffffff'
+      backgroundColor: "#ffffff"
     };
-
 
     let collapsed = this.props.sider_collapesed;
 
-    console.log('main: ' + collapsed)
+    console.log("main: " + collapsed);
 
     return (
       <Layout>
@@ -57,18 +57,20 @@ class Main extends React.Component {
               {collapsed ? (
                 <MenuUnfoldOutlined
                   onClick={this.toggleCollapsed}
-                  style={{ fontSize: '16px', color: '#ffffff' }}
+                  style={{ fontSize: "16px", color: "#ffffff" }}
                 ></MenuUnfoldOutlined>
               ) : (
                 <MenuFoldOutlined
                   onClick={this.toggleCollapsed}
-                  style={{ fontSize: '16px', color: '#ffffff' }}
+                  style={{ fontSize: "16px", color: "#ffffff" }}
                 ></MenuFoldOutlined>
               )}
             </span>
           </div>
 
-          <LeftMenu />
+          <Scrollbars className="leftMenu-container" style={{height: '90%'}}>
+              <LeftMenu />
+            </Scrollbars>
         </Sider>
 
         <Layout>
@@ -76,11 +78,12 @@ class Main extends React.Component {
             <ContentBar></ContentBar>
           </Content>
         </Layout>
+
+      
       </Layout>
     );
   }
 }
-
 
 const mapStateToProps = state => {
   return {

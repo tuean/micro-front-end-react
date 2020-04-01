@@ -63,6 +63,13 @@ html,body,#root{
   line-height: 50px;
 }
 
+.leftMenu-container {
+  /* height: 100%; */
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .projectName {
   color: #ffffff;
   font-size: 18px;

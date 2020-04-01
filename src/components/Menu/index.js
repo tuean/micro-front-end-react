@@ -1,18 +1,18 @@
 import React from "react";
 import { Menu, message } from "antd";
-import  {
-// AppstoreOutlined,
-MenuUnfoldOutlined,
-// MenuFoldOutlined,
-// PieChartOutlined,
-// DesktopOutlined,
-// InboxOutlined,
-// MailOutlined
+import {
+  // AppstoreOutlined,
+  MenuUnfoldOutlined
+  // MenuFoldOutlined,
+  // PieChartOutlined,
+  // DesktopOutlined,
+  // InboxOutlined,
+  // MailOutlined
 } from "@ant-design/icons";
 import { getMenuInfo } from "../../api/menu";
 import { connect } from "react-redux";
 import { saveMenu } from "../../store/action";
-import { getFirstChar } from '../../util/menuUtil';
+import { getFirstChar } from "../../util/menuUtil";
 
 const { SubMenu } = Menu;
 
@@ -57,10 +57,20 @@ class LeftMenu extends React.Component {
           title={
             <span>
               <span>
-                {item.iconUrl == null ? "" : <img alt="logo" className='menu-logo' src={item.iconUrl} />}
+                {item.iconUrl == null ? (
+                  ""
+                ) : (
+                  <img alt="logo" className="menu-logo" src={item.iconUrl} />
+                )}
               </span>
 
-              <span>{collapsed ? (item.iconUrl == null ? getFirstChar(item.menuName) : '') : item.menuName}</span>
+              <span>
+                {collapsed
+                  ? item.iconUrl == null
+                    ? getFirstChar(item.menuName)
+                    : ""
+                  : item.menuName}
+              </span>
             </span>
           }
         >
@@ -83,20 +93,21 @@ class LeftMenu extends React.Component {
   };
 
   render() {
-
     let collapsed = this.props.sider_collapesed;
 
-    console.log("menu: " + collapsed)
+    console.log("menu: " + collapsed);
 
     return (
-      <Menu
-        mode="inline"
-        theme="dark"
-        className="menu"
-        onClick={this.onMenuClick}
-      >
-        {this.createMenu(this.state.menuInfo, collapsed)}
-      </Menu>
+      <div style={{heigth: '90%'}}>
+        <Menu
+          mode="inline"
+          theme="dark"
+          className="menu"
+          onClick={this.onMenuClick}
+        >
+          {this.createMenu(this.state.menuInfo, collapsed)}
+        </Menu>
+      </div>
     );
   }
 }
